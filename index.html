@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#f4f4ed">
+	<meta name="description" content="A polished, playful Tic Tac Toe game for two players.">
+	<title>Tic Tac Toe</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="script.js" defer></script>
+</head>
+<body>
+	<main class="app-shell">
+		<header class="site-header">
+			<a class="brand" href="#home" aria-label="Tic Tac Toe home" id="brand-link">
+				<span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+				<span>little big games</span></a>
+			<p class="header-note">A classic, one more round.</p>
+		</header>
+		<section class="view setup-view" id="setup-view" aria-labelledby="game-title">
+			<div class="intro-copy">
+				<p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span> A CLASSIC FOR TWO PLAYERS</p>
+				<h1 id="game-title">Tic Tac <span>Toe</span></h1>
+				<p class="subtitle">Three in a row. Bragging rights forever.</p>
+			</div>
+			<form class="setup-panel" id="setup-form">
+				<div class="panel-heading">
+					<div>
+						<p class="section-kicker">BEFORE THE FIRST MOVE</p>
+						<h2>Set up your game</h2>
+					</div>
+					<span class="round-badge" aria-hidden="true">X<br>O</span>
+				</div>
+				<div class="player-fields">
+					<label class="field-wrap" for="player-x-name">
+						<span class="field-label"><span class="player-token token-x">X</span> Player X</span>
+						<input id="player-x-name" name="playerX" type="text" maxlength="18" autocomplete="off" placeholder="Enter a name" value="Player X">
+					</label>
+					<label class="field-wrap" for="player-o-name">
+						<span class="field-label"><span class="player-token token-o">O</span> Player O</span>
+						<input id="player-o-name" name="playerO" type="text" maxlength="18" autocomplete="off" placeholder="Enter a name" value="Player O">
+					</label>
+				</div>
+				<button class="button button-primary start-button" type="submit">Start Game <span aria-hidden="true">↗</span></button>
+			</form>
+			<p class="footnote"><span aria-hidden="true">✳</span> X makes the first move. Make it count.</p>
+		</section>
+		<section class="view game-view" id="game-view" aria-labelledby="game-title" hidden>
+			<div class="game-heading">
+				<div>
+					<p class="section-kicker">PLAYER VS PLAYER</p>
+					<h1 class="game-title">Tic Tac <span>Toe</span></h1>
+				</div>
+				<button class="button button-quiet menu-top-button" id="top-menu-button" type="button"><span aria-hidden="true">←</span> Main Menu</button>
+			</div>
+			<div class="game-layout">
+				<aside class="score-panel" aria-label="Scoreboard">
+					<div class="score-panel-heading">
+						<div>
+							<p class="section-kicker">THE SCOREBOARD</p>
+							<h2>Match tally</h2>
+						</div>
+						<span class="score-spark" aria-hidden="true">✳</span>
+					</div>
+					<div class="score-list">
+						<div class="score-row">
+							<span class="score-player"><span class="player-token token-x">X</span><span class="score-name" id="score-name-x">Player X</span></span>
+							<strong class="score-value" id="score-x" aria-label="Player X score">0</strong>
+						</div>
+						<div class="score-row">
+							<span class="score-player"><span class="player-token token-o">O</span><span class="score-name" id="score-name-o">Player O</span></span>
+							<strong class="score-value" id="score-o" aria-label="Player O score">0</strong>
+						</div>
+						<div class="score-row score-row-draws">
+							<span class="score-player"><span class="draw-token" aria-hidden="true">=</span><span class="score-name">Draws</span></span>
+							<strong class="score-value" id="score-draws" aria-label="Draw count">0</strong>
+						</div>
+					</div>
+					<button class="text-button reset-score-button" id="reset-score-button" type="button">Reset score</button>
+				</aside>
+				<section class="play-panel" aria-label="Tic Tac Toe match">
+					<div class="turn-banner" id="turn-banner" aria-live="polite" aria-atomic="true">
+						<span class="turn-indicator token-x" id="turn-token" aria-hidden="true">X</span>
+						<span id="turn-message">Player X's turn</span>
+					</div>
+					<div class="board" id="game-board" role="group" aria-label="Tic Tac Toe board">
+						<button class="cell" type="button" data-index="0" aria-label="Cell 1, empty"></button>
+						<button class="cell" type="button" data-index="1" aria-label="Cell 2, empty"></button>
+						<button class="cell" type="button" data-index="2" aria-label="Cell 3, empty"></button>
+						<button class="cell" type="button" data-index="3" aria-label="Cell 4, empty"></button>
+						<button class="cell" type="button" data-index="4" aria-label="Cell 5, empty"></button>
+						<button class="cell" type="button" data-index="5" aria-label="Cell 6, empty"></button>
+						<button class="cell" type="button" data-index="6" aria-label="Cell 7, empty"></button>
+						<button class="cell" type="button" data-index="7" aria-label="Cell 8, empty"></button>
+						<button class="cell" type="button" data-index="8" aria-label="Cell 9, empty"></button>
+					</div>
+					<div class="round-actions">
+						<button class="button button-primary" id="play-again-button" type="button"><span aria-hidden="true">↻</span> Play Again</button>
+						<button class="button button-secondary" id="main-menu-button" type="button">Main Menu</button>
+					</div>
+				</section>
+			</div>
+			<p class="game-footnote"><span aria-hidden="true">✳</span> A good game is its own reward. The score helps, too.</p>
+		</section>
+		<dialog class="result-modal" id="result-modal" aria-labelledby="result-title" aria-describedby="result-message">
+			<div class="modal-content">
+				<span class="result-icon" id="result-icon" aria-hidden="true">🎉</span>
+				<p class="section-kicker">ROUND COMPLETE</p>
+				<h2 id="result-title">Player X wins!</h2>
+				<p class="result-message" id="result-message">Congratulations!</p>
+				<div class="modal-actions">
+					<button class="button button-primary" id="modal-play-again-button" type="button">Play Again <span aria-hidden="true">↗</span></button>
+					<button class="button button-secondary" id="modal-menu-button" type="button">Main Menu</button>
+				</div>
+			</div>
+		</dialog>
+		<footer class="site-footer"><span>THINK AHEAD</span><span aria-hidden="true">·</span><span>HAVE FUN</span><span aria-hidden="true">·</span><span>PLAY AGAIN</span></footer>
+	</main>
+</body>
+</html>
